@@ -222,7 +222,7 @@ a, a:hover, a:focus, a:active {
 .rain {
   position: absolute;
   left: 0;
-  width: 100%;
+  width: 97%;
   height: 100vh;
   z-index: -1;
 }
