@@ -3,11 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const introLines = [
     "PS C:\\> Connect-Lyssacape",
     "##############################",
+     "",
     "Welcome!",
     "",
     "You've successfully connected to Lyssacape's Domain.",
     "",
-    "I’m Alyssa Capehart — I automate the onboarding workflows your IT department still cries about.",
+    "I’m Alyssa Capehart — I automate the processes your IT department still cries about.",
     "PowerShell is my love language.",
     "",
     "##############################",
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnContainer = document.createElement('div');
     btnContainer.id = "button-container";
     btnContainer.innerHTML = `
-      <button class="cli-btn" data-cmd="show-projects">get-projects</button>
+      <button class="cli-btn" data-cmd="get-projects">get-projects</button>
       <button class="cli-btn" data-cmd="get-info">get-info</button>
     `;
     document.getElementById('terminal').appendChild(btnContainer);
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function runCommand(command) {
     switch (command.toLowerCase()) {
-      case 'show-projects':
+      case 'get-projects':
         const projects = [
           {
             title: "Enterprise Onboarding/Offboarding Lifecycle Automation",
@@ -112,13 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         projects.forEach(p => {
-          output.innerHTML += `<div class="write-yellow">Title:       ${p.title}</div>`;
-          output.innerHTML += `<div class="write-yellow">Description: ${p.description}</div>`;
-          output.innerHTML += `<div class="write-yellow">Link:        <a href="${p.link}" target="_blank">${p.link}</a></div>\n`;
+          output.innerHTML += `<div class="write-white">Title:       ${p.title}</div>`;
+          output.innerHTML += `<div class="write-white">Description: ${p.description}</div>`;
+          output.innerHTML += `<div class="write-white">Link:        <a href="${p.link}" target="_blank">${p.link}</a></div>\n`;
         });
         break;
       case 'get-info':
-        output.innerHTML += `<div class="write-green">Alyssa Capehart: Cloud Systems Engineer</div>`;
+        output.innerHTML += `<div class="write-white">Name: Alyssa Capehart</div>`;
+        output.innerHTML += `<div class="write-white">Title: Cloud System Administrator</div>`;
         output.innerHTML += `<div class="write-white">Description: Specializing in enterprise automation and Identity and Access Management.</div>`;
         break;
 
