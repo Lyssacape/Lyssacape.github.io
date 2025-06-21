@@ -1,12 +1,29 @@
 body {
-  background: #0c0c0c;
-  color: #00ff00;
-  font-family: monospace;
+  background-color: #012456; /* PowerShell ISE background */
+  color: #ffffff; /* ISE text */
+  font-family: Consolas, "Lucida Console", monospace;
   padding: 2rem;
+  line-height: 1.5;
 }
+
+#terminal {
+  max-width: 800px;
+  margin: 0 auto;
+  white-space: pre-wrap;
+  font-size: 1rem;
+}
+
 #input::after {
   content: "_";
   animation: blink 1s step-start infinite;
+  color: #00ffff; /* Cyan blinking cursor */
+}
+
+code {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #00ffff;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 @keyframes blink {
   50% { opacity: 0; }
