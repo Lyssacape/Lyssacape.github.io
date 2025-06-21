@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
           case 'cls':
             output.innerHTML = '';
             index = 0;
-            typeNextChar();
+            typeNextChar(); // Restart typing prompt
             break;
           default:
             output.innerHTML += `'${command}' is not recognized as a valid command.\n`;
