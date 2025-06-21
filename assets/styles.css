@@ -1,16 +1,33 @@
+/* Reset body and layout */
 body {
-  background: #012456;
-  color: #ffffff;
+  background-color: #012456; /* PowerShell ISE deep blue */
+  color: #ffffff;            /* white text */
   font-family: Consolas, "Lucida Console", monospace;
   padding: 2rem;
+  margin: 0;
 }
 
+/* Terminal output area */
+#terminal {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+pre {
+  white-space: pre-wrap;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Blinking underscore cursor */
 .cursor::after {
   content: "_";
   animation: blink 1s step-start infinite;
-  color: #ffffff;
+  color: #ffffff; /* matches PowerShell ISE */
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
