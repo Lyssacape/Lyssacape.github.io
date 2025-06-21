@@ -99,24 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function runCommand(command) {
     switch (command.toLowerCase()) {
       case 'get-projects':
-        const projects = [
-          {
-            title: "Enterprise Onboarding/Offboarding Lifecycle Automation",
-            description: "A complete process that reads HRIS data and takes the appropriate action on a user's access across multiple systems.",
-            link: "TBA"
-          },
-          {
-            title: "TBD",
-            description: "TBD",
-            link: "TBD"
-          }
-        ];
-
-        projects.forEach(p => {
-          output.innerHTML += `<div class="write-white">Title:       ${p.title}</div>`;
-          output.innerHTML += `<div class="write-white">Description: ${p.description}</div>`;
-          output.innerHTML += `<div class="write-white">Link:        <a href="${p.link}" target="_blank">${p.link}</a></div>\n`;
-        });
+        fetch('data/projects.json')
+          .then(res => res.json())
+          .then(projects => {
+            projects.forEach(p => {
+              output.innerHTML += `<div class="write-white">Title:       ${p.title}</div>`;
+              output.innerHTML += `<div class="write-white">Description: ${p.description}</div>`;
+              output.innerHTML += `<div class="write-white">Link:        <a href="${p.link}" target="_blank">${p.link}</a></div>\n`;
+            });
+            scrollToBottom();
+          })
+          .catch(err => {
+            output.innerHTML += `<div class="write-red"Failed to load projects: ${err.message}</div>`;
+            scrollToBottom();
+          });
         break;
       case 'get-info':
         output.innerHTML += `<div class="write-white">Name: Alyssa Capehart</div>`;
