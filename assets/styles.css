@@ -1,4 +1,4 @@
-/* ISE-style blue terminal with white text */
+/* PowerShell ISE-style blue terminal */
 body {
   background-color: #012456;
   color: #ffffff;
@@ -19,7 +19,7 @@ pre {
   color: #ffffff;
 }
 
-/* Blinking white cursor */
+/* Blinking white underscore cursor */
 .cursor::after {
   content: "_";
   animation: blink 1s step-start infinite;
@@ -30,4 +30,10 @@ pre {
   50% {
     opacity: 0;
   }
+}
+
+/* Yellow banner style like PowerShell warning */
+.banner-line {
+  color: #ffff66;
+  font-weight: bold;
 }
