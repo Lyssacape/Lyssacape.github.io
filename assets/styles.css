@@ -1,13 +1,12 @@
-/* Reset body and layout */
+/* ISE-style blue terminal with white text */
 body {
-  background-color: #012456; /* PowerShell ISE deep blue */
-  color: #ffffff;            /* white text */
+  background-color: #012456;
+  color: #ffffff;
   font-family: Consolas, "Lucida Console", monospace;
   padding: 2rem;
   margin: 0;
 }
 
-/* Terminal output area */
 #terminal {
   max-width: 1000px;
   margin: 0 auto;
@@ -17,13 +16,14 @@ pre {
   white-space: pre-wrap;
   font-size: 1rem;
   line-height: 1.6;
+  color: #ffffff;
 }
 
-/* Blinking underscore cursor */
+/* Blinking white cursor */
 .cursor::after {
   content: "_";
   animation: blink 1s step-start infinite;
-  color: #ffffff; /* matches PowerShell ISE */
+  color: #ffffff;
 }
 
 @keyframes blink {
