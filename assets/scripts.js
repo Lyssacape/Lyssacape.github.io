@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     "You've successfully connected to Lyssacape's Domain.",
     "",
     "I’m Alyssa Capehart — I automate the onboarding workflows your IT department still cries about.",
-    "PowerShell is my love language. REST APIs are my coping mechanism.",
+    "PowerShell is my love language.",
     "",
-    "Type 'show-projects' to see what I've replaced humans with.",
     "##############################",
+    "",
     "",
     "Please choose a command:"
   ];
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnContainer = document.createElement('div');
     btnContainer.id = "button-container";
     btnContainer.innerHTML = `
-      <button class="cli-btn" data-cmd="show-projects">Get Projects</button>
-      <button class="cli-btn" data-cmd="get-info">Get Info</button>
+      <button class="cli-btn" data-cmd="show-projects">get-projects</button>
+      <button class="cli-btn" data-cmd="get-info">get-info</button>
     `;
     document.getElementById('terminal').appendChild(btnContainer);
 
@@ -100,30 +100,30 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'show-projects':
         const projects = [
           {
-            title: "Graph API Automation",
-            description: "Automates Entra ID provisioning across systems.",
-            link: "https://github.com/yourusername/graph-api-automation"
+            title: "Enterprise Onboarding/Offboarding Lifecycle Automation",
+            description: "A complete process that reads HRIS data and takes the appropriate action on a user's access across multiple systems.",
+            link: "TBA"
           },
           {
-            title: "Freshservice Auto-Ticketing",
-            description: "Closes onboarding tickets when workflows complete.",
-            link: "https://github.com/yourusername/freshservice-ticketing"
+            title: "TBD",
+            description: "TBD",
+            link: "TBD"
           }
         ];
 
         projects.forEach(p => {
           output.innerHTML += `<div class="write-yellow">Title:       ${p.title}</div>`;
-          output.innerHTML += `<div class="write-cyan">Description: ${p.description}</div>`;
-          output.innerHTML += `<div class="write-green">Link:        <a href="${p.link}" target="_blank">${p.link}</a></div>\n`;
+          output.innerHTML += `<div class="write-yellow">Description: ${p.description}</div>`;
+          output.innerHTML += `<div class="write-yellow">Link:        <a href="${p.link}" target="_blank">${p.link}</a></div>\n`;
         });
         break;
       case 'get-info':
         output.innerHTML += `<div class="write-green">Alyssa Capehart: Cloud Systems Engineer</div>`;
-        output.innerHTML += `<div class="write-cyan">Specializing in PowerShell, Graph, Entra ID, and enterprise onboarding automation.</div>`;
+        output.innerHTML += `<div class="write-white">Description: Specializing in enterprise automation and Identity and Access Management.</div>`;
         break;
 
       default:
-        output.innerHTML += `<div class="write-red">❌ '${command}' is not recognized, even though you clicked it. Brutal.</div>`;
+        output.innerHTML += `<div class="write-red">'${command}' is not recognized, even though you clicked it? Sorry about that, I'm probably working on it.</div>`;
     }
     scrollToBottom();
   }
