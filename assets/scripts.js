@@ -1,23 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
   const output = document.getElementById('output');
-  const line = 'PS C:\\> Press Enter to type a command';
+  const fullLine = 'PS C:\\> Press Enter to type a command';
   let index = 0;
 
-  // Typing effect for initial line
   function typeNextChar() {
-    if (index <= line.length) {
-      output.innerHTML = line.slice(0, index) + '<span class="cursor"></span>';
+    if (index <= fullLine.length) {
+      output.innerHTML = fullLine.slice(0, index) + '<span class="cursor"></span>';
       index++;
-      setTimeout(typeNextChar, 40); // Adjust speed here
+      setTimeout(typeNextChar, 40);
     } else {
-      output.innerHTML = line + '<span class="cursor"></span>\n';
+      output.innerHTML = fullLine + '<span class="cursor"></span>\n';
       enableCommandListener();
     }
   }
 
   typeNextChar();
 
-  // Wait for Enter key to prompt for a command
   function enableCommandListener() {
     document.addEventListener('keydown', async (e) => {
       if (e.key === 'Enter') {
@@ -32,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
           case 'cls':
             output.innerHTML = '';
             index = 0;
-            typeNextChar(); // Restart typing after clear
+            typeNextChar();
             break;
           default:
             output.innerHTML += `'${command}' is not recognized as a valid command.\n`;
@@ -41,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Load project list from JSON
   async function showProjects() {
     try {
       const res = await fetch('data/projects.json');
