@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Enterprise Onboarding/Offboarding Automation Process",
+    "description": "Engineered a fully automated, multi-system identity lifecycle solution using PowerShell and REST APIs. Leverages a custom function library to manage onboarding, offboarding, licensing, and access provisioning across Entra ID and downstream systems.",
+    "link": ""
+  },
+  {
+    "title": "Placeholder 2",
+    "description": "Description2",
+    "link": ""
+  }
+]
