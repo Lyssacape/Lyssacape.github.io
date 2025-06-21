@@ -28,3 +28,9 @@ code {
 @keyframes blink {
   50% { opacity: 0; }
 }
+.cursor::after {
+  content: "_";
+  animation: blink 1s step-start infinite;
+  color: #00ffff;
+}
+

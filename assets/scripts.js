@@ -2,10 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('input');
   const output = document.getElementById('output');
 
-  // Simulated command processing
+  // Show the initial default terminal line
+  output.innerHTML = `Press Enter to type a command<span class="cursor">_</span>\n`;
+
   document.addEventListener('keydown', async (e) => {
     if (e.key === 'Enter') {
-      const command = prompt('PS C:\\> Enter command'); // Replace with real input later
+      const command = prompt('PS C:\\> Enter command'); // placeholder input
       if (command === 'show-projects') {
         showProjects();
       } else {
@@ -15,15 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   async function showProjects() {
-    output.innerHTML += "\nPS C:\\> show-projects\n";
+  output.innerHTML += "\nPS C:\\> show-projects\n";
     try {
-      const res = await fetch('data/projects.json');
-      const projects = await res.json();
-      projects.forEach(p => {
-        output.innerHTML += `\n[${p.title}]\n${p.description}\n${p.link}\n`;
-      });
+        const res = await fetch('data/projects.json');
+        const projects = await res.json();
+
+        projects.forEach(p => {
+        output.innerHTML += `
+    Title:       ${p.title}
+    Description: ${p.description}
+    Link:        ${p.link}\n`;
+        });
     } catch (err) {
-      output.innerHTML += `Error loading projects: ${err.message}\n`;
+        output.innerHTML += `Error loading projects: ${err.message}\n`;
     }
-  }
+    }
 });
