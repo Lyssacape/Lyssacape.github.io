@@ -10,6 +10,8 @@ body {
 #terminal {
   max-width: 1000px;
   margin: 0 auto;
+  overflow-y: auto;
+  height: 90vh;
 }
 
 pre {
@@ -36,4 +38,52 @@ pre {
 .banner-line {
   color: #ffff66;
   font-weight: bold;
+}
+
+/* Styled buttons for commands */
+.cli-btn {
+  background-color: #333;
+  color: #ffff66;
+  font-family: Consolas, "Lucida Console", monospace;
+  border: 1px solid #ffff66;
+  padding: 6px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.cli-btn:hover {
+  background-color: #555;
+}
+
+#button-container {
+  margin-top: 1rem;
+}
+
+/* Styled command output (Write-Host style) */
+.write-yellow {
+  color: #ffff66;
+  font-weight: bold;
+}
+
+.write-green {
+  color: #66ff66;
+}
+
+.write-red {
+  color: #ff6666;
+}
+
+.write-cyan {
+  color: #66ffff;
+}
+
+a {
+  color: #66ff66;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
