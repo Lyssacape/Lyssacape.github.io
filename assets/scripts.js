@@ -21,39 +21,47 @@ document.addEventListener('DOMContentLoaded', () => {
   let charIndex = 0;
 
   function typeLine() {
-    if (lineIndex < introLines.length) {
-      const line = introLines[lineIndex];
+  if (lineIndex < introLines.length) {
+    const line = introLines[lineIndex];
 
-      const isBannerLine = lineIndex > 0 && lineIndex < introLines.length - 1;
-      const typed = line.slice(0, charIndex);
-      const styledLine = isBannerLine
-        ? `<span class="banner-line">${typed}</span>`
-        : typed;
+    const isBannerLine = lineIndex > 0 && lineIndex < introLines.length - 1;
+    const typed = line.slice(0, charIndex);
+    const styledLine = isBannerLine
+      ? `<span class="banner-line">${typed}</span>`
+      : typed;
 
-      // Remove existing cursor
-      output.innerHTML = output.innerHTML.replace(/<span class="cursor"><\/span>$/, '');
+    let lines = output.innerHTML.split('\n');
 
-      // Add current line with cursor
-      const currentLine = styledLine + '<span class="cursor"></span>';
+    // Remove all existing cursors
+    lines = lines.map(l => l.replace(/<span class="cursor"><\/span>/g, ''));
 
-      // Overwrite or append line
-      const lines = output.innerHTML.split('\n');
-      lines[lines.length - 1] = currentLine;
-      output.innerHTML = lines.join('\n');
+    // If this is the final line, keep the blinking cursor forever
+    const isFinalLine = lineIndex === introLines.length - 1;
 
-      charIndex++;
+    // Add cursor if still typing or it's the final line
+    const withCursor = styledLine + (isFinalLine || charIndex < line.length ? '<span class="cursor"></span>' : '');
+
+    lines[lines.length - 1] = withCursor;
+    output.innerHTML = lines.join('\n');
+
+    charIndex++;
       if (charIndex <= line.length) {
-        setTimeout(typeLine, 20); // character speed
+        setTimeout(typeLine, 20);
       } else {
-        output.innerHTML += '\n';
+        if (!isFinalLine) {
+          // Done typing this line, add line break and move to next
+          lines[lines.length - 1] = styledLine; // remove trailing cursor
+          output.innerHTML = lines.join('\n') + '\n';
+        }
         lineIndex++;
         charIndex = 0;
-        setTimeout(typeLine, 100); // delay between lines
+        setTimeout(typeLine, 100);
       }
     } else {
       enableCommandListener();
     }
   }
+
 
   typeLine();
 
