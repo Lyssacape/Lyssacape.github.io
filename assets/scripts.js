@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const output = document.getElementById('output');
   const introLines = [
-    "PS C:\\> Connect-Lyssacape'sDomain",
+    "PS C:\\> Connect-Lyssacape",
     "##############################",
     "Welcome!",
     "",
